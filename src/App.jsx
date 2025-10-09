@@ -5,6 +5,7 @@ import { ToastProvider } from "./context/ToastContext";
 import Sales from "./pages/Sales";
 import Landing from "./pages/Landing"; 
 import "./App.css";
+import "./styles/navbar.css";
 import Blog from "./pages/Blog";
 
 function App() {

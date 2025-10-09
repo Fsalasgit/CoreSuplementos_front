@@ -1,41 +1,103 @@
-#root {
-  margin: 0 auto;
-  padding: 0rem;
-  text-align: center;
+/* 🌍 RESET GENERAL */
+/* Elimina todos los márgenes, paddings y estilos por defecto */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ⚙️ Variables globales y escalas responsivas */
+:root {
+  /* Escala base de fuente: ajustable según ancho de pantalla */
+  font-size: clamp(0.75rem, 1vw + 0.5rem, 1rem);
+  
+  /* Colores base */
+  --color-bg: #f8f9fa;
+  --color-text: #212529;
+  --color-primary: #0d6efd;
+  --color-dark: #1a1a1a;
+
+  /* Espaciados relativos */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* 🧱 Estructura base */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* 🔡 Tipografía fluida */
+h1 {
+  font-size: clamp(2rem, 4vw + 1rem, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw + 0.25rem, 2rem);
+}
+
+p, span, li, button, input, label {
+  font-size: clamp(0.9rem, 1vw + 0.2rem, 1rem);
+}
+
+/* 🧭 Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* 🪶 Imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 🧩 Contenedores */
+.container {
+  width: min(90%, 1200px);
+  margin-inline: auto;
+  padding: var(--space-sm);
+}
+
+/* 🔘 Botones */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* 📱 Media queries base (pueden expandirse más adelante) */
+@media (max-width: 768px) {
+  :root {
+    font-size: clamp(0.7rem, 1vw + 0.4rem, 0.9rem);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: clamp(0.6rem, 1vw + 0.3rem, 0.8rem);
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

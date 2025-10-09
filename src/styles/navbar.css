@@ -1,0 +1,78 @@
+/* 🌐 NAVBAR BASE */
+.main-navbar {
+  padding: 0.8rem 1rem;
+}
+
+/* 🧩 Logo */
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: auto;
+  width: clamp(2.5rem, 6vw, 3rem); /* Escala fluida */
+  object-fit: contain;
+}
+
+.brand-text {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.brand-container:hover .brand-text {
+  color: var(--color-primary);
+}
+
+/* 🔗 Links */
+.nav-item-link {
+  color: #f8f9fa !important;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-item-link:hover {
+  color: var(--color-primary) !important;
+}
+
+/* 📱 Responsive: vista móvil */
+@media (max-width: 768px) {
+  .brand-text {
+    font-size: 1.3rem;
+  }
+}
+
+/* 📱📱 Vista muy pequeña (vertical) */
+@media (max-width: 480px) and (orientation: portrait) {
+  .brand-text {
+    font-size: 1.3rem;
+  }
+
+  /* 👇 Solo muestra "Core" */
+  .brand-text::after {
+    content: "Core";
+  }
+
+  /* Oculta el texto original */
+  .brand-text {
+    visibility: hidden;
+    position: relative;
+  }
+
+  .brand-text::after {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+  }
+
+  .brand-logo {
+    width: clamp(2rem, 10vw, 2.5rem);
+  }
+}

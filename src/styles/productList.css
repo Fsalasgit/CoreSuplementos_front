@@ -1,0 +1,56 @@
+.product-page {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 🧱 Sidebar fijo */
+.sidebar-container {
+  width: 250px;
+  flex-shrink: 0;
+  border-right: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  transition: transform 0.3s ease;
+}
+
+/* 📱 En mobile se oculta */
+@media (max-width: 992px) {
+  .sidebar-container {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: calc(100vh - 4rem);
+    transform: translateX(-100%);
+    z-index: 1050;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar-container.show {
+    transform: translateX(0);
+  }
+
+  .product-page {
+    flex-direction: column;
+  }
+
+  .sidebar-toggle {
+    position: sticky;
+    top: 1rem;
+    z-index: 1100;
+  }
+}
+
+/* 🧱 Grilla adaptable */
+.product-grid {
+  flex: 1;
+}
+
+/* Ajustes visuales */
+@media (max-width: 768px) {
+  .product-grid .col {
+    padding: 0.3rem;
+  }
+}
