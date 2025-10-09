@@ -1,0 +1,22 @@
+body {
+  background-color: #0a61b8;
+  margin: 0;
+  padding: 0;
+}
+
+
+.card-title {
+  font-size: 1.1rem;
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.aside {
+  background-color: #f8f9fa;
+}
