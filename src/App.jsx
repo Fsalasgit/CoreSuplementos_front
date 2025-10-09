@@ -7,6 +7,7 @@ import Landing from "./pages/Landing";
 import "./App.css";
 import "./styles/navbar.css";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Landing />} /> {/* Página principal */}
             <Route path="/blog" element={<Blog />} /> {/* Página de ventas/blog */}
             <Route path="/tienda" element={<Sales />} /> {/* Página de ventas/blog */}
+            <Route path="/blog/:id" element={<BlogDetail />} />
           </Routes>
         </ToastProvider>
       </Container>
