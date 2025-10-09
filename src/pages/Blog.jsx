@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import posts from "../textBlog/indexBlog";
+import posts from "../textBlog/indexBlog"; // asegúrate que esta ruta esté correcta
 import "../styles/blog.css";
 
 export default function Blog() {
@@ -31,26 +31,38 @@ export default function Blog() {
 
       {/* 🔄 Listado secuencial */}
       <div className="feed-list">
-        {filteredPosts.map((post) => (
-          <Link
-            to={`/blog/${post.id}`}
-            key={post.id}
-            className="feed-item"
-          >
-            <img
-              src={post.image}
-              alt={post.title}
-              className="feed-thumbnail"
-            />
-            <div className="feed-info">
-              <h3>{post.title}</h3>
-              <p className="feed-summary">{post.summary}</p>
-              <small className="text-muted">
-                {post.author} • {new Date(post.date).toLocaleDateString("es-AR")}
-              </small>
-            </div>
-          </Link>
-        ))}
+        {filteredPosts.map((post) => {
+          // 🎥 Asegura que el link de YouTube sea formato embed
+          const embedUrl = post.videoUrl?.includes("watch?v=")
+            ? post.videoUrl.replace("watch?v=", "embed/")
+            : post.videoUrl;
+
+          return (
+            <Link
+              to={`/blog/${post.id}`}
+              key={post.id}
+              className="feed-item"
+            >
+              <div className="feed-video-container">
+                <iframe
+                  src={embedUrl}
+                  title={post.title}
+                  allowFullScreen
+                  className="feed-thumbnail"
+                ></iframe>
+              </div>
+
+              <div className="feed-info">
+                <h3 className="feed-title-item">{post.title}</h3>
+                <p className="feed-summary">{post.summary}</p>
+                <small className="feed-meta">
+                  {post.author} •{" "}
+                  {new Date(post.date).toLocaleDateString("es-AR")}
+                </small>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
