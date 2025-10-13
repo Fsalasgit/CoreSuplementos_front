@@ -70,8 +70,8 @@ export default function ProductList() {
       ) || 0;
 
     result.sort((a, b) => {
-      const priceA = cleanPrice(a.PRECIO_INTERNO);
-      const priceB = cleanPrice(b.PRECIO_INTERNO);
+      const priceA = cleanPrice(a.PRECIO_WEB);
+      const priceB = cleanPrice(b.PRECIO_WEB);
       return sortOrder === "asc" ? priceA - priceB : priceB - priceA;
     });
 

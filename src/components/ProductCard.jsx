@@ -16,7 +16,7 @@ export default function ProductCard({ product, addToCart }) {
   const handleAdd = (e) => {
     if (showToast) return; // bloquea cualquier producto mientras toast activo
 
-    const price = parsePrice(product.PRECIO_INTERNO);
+    const price = parsePrice(product.PRECIO_WEB);
     addToCart(product.ID, quantity, price, product.nom_mayorista, product.IMG);
 
     setToastPos({ top: e.clientY, left: e.clientX });
@@ -38,7 +38,7 @@ export default function ProductCard({ product, addToCart }) {
           <Card.Text>
             <small>{product.CATEGORIA}</small>
             <br />
-            <b>{product.PRECIO_INTERNO}</b>
+            <b>{product.PRECIO_WEB}</b>
           </Card.Text>
 
           <Form.Control
