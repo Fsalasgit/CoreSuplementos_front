@@ -73,7 +73,7 @@ export default function Landing() {
           <h2 className="fw-bold">¿Querés tu suplemento al mejor precio?</h2>
           <p className="lead">Contactanos ahora por WhatsApp y obtené tu presupuesto sin compromiso.</p>
           <Button
-            href="https://wa.me/549XXXXXXXXXX" // tu número con prefijo país
+            href="https://wa.me/5493816346228" // tu número con prefijo país
             target="_blank"
             variant="success"
             size="lg"

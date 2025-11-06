@@ -51,14 +51,14 @@ export default function ProductList() {
     if (term) {
       result = result.filter(
         (p) =>
-          `${p.nom_mayorista || ""} ${p.CATEGORIA || ""}`
+          `${p.NOMBRE || ""} ${p.categoria || ""}`
             .toLowerCase()
             .includes(term)
       );
     }
 
     if (category) {
-      result = result.filter((p) => p.CATEGORIA === category);
+      result = result.filter((p) => p.categoria === category);
     }
 
     const cleanPrice = (val) =>
@@ -70,8 +70,8 @@ export default function ProductList() {
       ) || 0;
 
     result.sort((a, b) => {
-      const priceA = cleanPrice(a.PRECIO_WEB);
-      const priceB = cleanPrice(b.PRECIO_WEB);
+      const priceA = cleanPrice(a.PRECIO_VENTA);
+      const priceB = cleanPrice(b.PRECIO_VENTA);
       return sortOrder === "asc" ? priceA - priceB : priceB - priceA;
     });
 
@@ -93,7 +93,7 @@ export default function ProductList() {
       </Alert>
     );
 
-  const categories = [...new Set(products.map((p) => p.CATEGORIA || ""))].filter(Boolean);
+  const categories = [...new Set(products.map((p) => p.categoria || ""))].filter(Boolean);
 
   return (
     <div className="product-page">
