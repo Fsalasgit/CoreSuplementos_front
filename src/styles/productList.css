@@ -54,3 +54,73 @@
     padding: 0.3rem;
   }
 }
+
+
+/* ====== SIDEBAR DESKTOP STICKY ====== */
+.sidebar-container {
+  position: sticky;
+  top: calc(var(--navbar-height, 64px) + 0.75rem);
+  height: calc(100vh - var(--navbar-height, 64px) - 1.5rem);
+  overflow: auto;
+}
+
+/* ====== MOBILE DRAWER BACKDROP ====== */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1045; /* un poquito debajo del sidebar (1050) */
+  backdrop-filter: blur(2px);
+}
+
+/* Mantengo tu comportamiento drawer en mobile */
+@media (max-width: 992px) {
+  .sidebar-container {
+    position: fixed;
+    top: var(--navbar-height, 64px);
+    height: calc(100vh - var(--navbar-height, 64px));
+  }
+}
+
+
+/* ====== GRID & CARDS POLISH ====== */
+.product-grid {
+  padding-inline: clamp(.5rem, 2.5vw, 1rem);
+}
+
+/* Card: elevación suave */
+.product-grid .card {
+  border: 1px solid rgba(0,0,0,0.08);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  will-change: transform;
+}
+.product-grid .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+  border-color: rgba(0,0,0,0.12);
+}
+
+/* Imagen más alta en desktop, controlada en mobile */
+.product-grid .card-img-top {
+  height: clamp(160px, 24vw, 220px) !important;
+  object-fit: cover;
+}
+
+/* Título y precios con jerarquía visual */
+.product-grid .card-title {
+  font-size: clamp(.95rem, 2.4vw, 1.05rem);
+  line-height: 1.2;
+  min-height: 2.2em; /* evita saltos en cards */
+}
+
+.product-grid .card-text b {
+  font-size: clamp(1.05rem, 2.8vw, 1.2rem);
+}
+
+/* Gutter un poco más compacto en móviles pequeños */
+@media (max-width: 576px) {
+  .product-grid .row {
+    --bs-gutter-x: .5rem;
+    --bs-gutter-y: .75rem;
+  }
+}

@@ -119,6 +119,15 @@ export default function ProductList() {
         />
       </aside>
 
+      {/* 🔹 Backdrop móvil para cerrar tocando fuera */}
+      {showSidebar && (
+        <div
+          className="sidebar-backdrop d-lg-none"
+          onClick={() => setShowSidebar(false)}
+        />
+      )}
+
+
       {/* 🔹 Grilla de productos */}
       <div className="product-grid flex-grow-1 p-3">
         <Row className="g-3">
