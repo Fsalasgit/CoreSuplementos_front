@@ -1,7 +1,38 @@
 /* 🌐 NAVBAR BASE */
+
 .main-navbar {
   padding: 0.8rem 1rem;
 }
+
+/* navbar.css */
+
+/* Altura y base */
+:root {
+  --navbar-height: 64px;
+}
+
+.main-navbar {
+  padding: 0.6rem 1rem;
+  min-height: var(--navbar-height);
+  transition: background-color .25s ease, box-shadow .25s ease, padding .25s ease, backdrop-filter .25s ease;
+}
+
+/* Cuando hay scroll: achica un poco, agrega sombra y blur translúcido */
+.nav-scrolled {
+  padding: 0.4rem 1rem;
+  background: rgba(33, 37, 41, 0.85) !important; /* bg-dark con transparencia */
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Espaciador debajo del navbar fijo */
+.navbar-spacer {
+  height: var(--navbar-height);
+}
+
+/* ——— Tus estilos existentes ——— */
+
 
 /* 🧩 Logo */
 .brand-container {

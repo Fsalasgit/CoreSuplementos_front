@@ -1,10 +1,14 @@
 import React, { useState, useContext } from "react";
 import { Card, Button, Form, Toast } from "react-bootstrap";
 import { ToastContext } from "../context/ToastContext";
+import { Modal } from "react-bootstrap";
+
 
 export default function ProductCard({ product, addToCart }) {
   const { showToast, setShowToast, toastPos, setToastPos } = useContext(ToastContext);
   const [quantity, setQuantity] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+
 
   // NUEVA FUNCIÓN: Formatea el número a formato de moneda ($10.000,00)
   const formatCurrency = (amount) => {
@@ -59,7 +63,8 @@ export default function ProductCard({ product, addToCart }) {
         <Card.Img
           variant="top"
           src={product.IMG_WEB || "https://via.placeholder.com/150"}
-          style={{ objectFit: "cover", height: "180px" }}
+          style={{ objectFit: "cover", height: "180px", cursor: "pointer" }}
+          onClick={() => setShowModal(true)}
         />
         <Card.Body>
           <Card.Title>{product.NOMBRE}</Card.Title>
@@ -72,6 +77,7 @@ export default function ProductCard({ product, addToCart }) {
               <span style={{ textDecoration: 'line-through', color: '#888', marginRight: '8px' }}>
                 {formatCurrency(precioWeb)}
               </span>
+              
             )}
 
             {/* 2. Precio de Venta Formateado */}
@@ -120,6 +126,32 @@ export default function ProductCard({ product, addToCart }) {
           </Toast>
         </div>
       )}
+
+
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        centered
+        size="xl"
+        backdrop={true}      // ← permite cerrar al tocar afuera
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "black",
+          }}
+        >
+          <img
+            src={product.IMG_WEB || "https://via.placeholder.com/150"}
+            alt={product.NOMBRE}
+            style={{ width: "100%", maxHeight: "90vh", objectFit: "contain" }}
+            onClick={(e) => e.stopPropagation()}  // ← evita cierre tocando la imagen
+          />
+        </div>
+      </Modal>
+
     </>
   );
 }
