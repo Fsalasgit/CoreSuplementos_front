@@ -60,12 +60,22 @@ export default function ProductCard({ product, addToCart }) {
   return (
     <>
       <Card className="h-100 shadow-sm">
-        <Card.Img
-          variant="top"
-          src={product.IMG_WEB || "https://via.placeholder.com/150"}
-          style={{ objectFit: "cover", height: "180px", cursor: "pointer" }}
-          onClick={() => setShowModal(true)}
-        />
+        <div className="image-wrapper position-relative">
+          <Card.Img
+            variant="top"
+            src={product.IMG_WEB || "https://via.placeholder.com/150"}
+            style={{ objectFit: "cover", height: "180px", cursor: "pointer" }}
+            onClick={() => setShowModal(true)}
+          />
+
+          {/* 🟥 Cartel de SIN STOCK */}
+          {(product.STOCK === "AGOTADO" || product.STOCK === "SIN STOCK") && (
+            <div className="out-of-stock-banner">
+              Actualmente sin stock
+            </div>
+          )}
+        </div>
+
         <Card.Body>
           <Card.Title>{product.NOMBRE}</Card.Title>
           <Card.Text>
